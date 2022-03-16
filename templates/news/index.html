@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hyper news</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+<form action="/news/" method="get">
+    <label for="search">Search:</label>
+    <input id="search" name="q">
+    <button type="submit">Find</button>
+</form>
+{% for create in created %}
+<h4>{{ create }}</h4>
+<ul>
+    {% for n in news %}
+    {% if create in n.created %}
+    <li><a target="_blank" href="/news/{{ n.link }}/">{{ n.title }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endfor %}
+<a target="_blank" href="/news/create/">Create</a>
+</body>
+</html>
